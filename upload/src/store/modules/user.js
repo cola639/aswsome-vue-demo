@@ -1,5 +1,5 @@
-import { wxLogin, getUserInfo } from '@/api/user'
-import { getToken, setToken, removeToken } from '@/utils/auth'
+import { getUserInfo } from '@/api/user'
+import { getToken, removeToken } from '@/utils/auth'
 // import { resetRouter } from '@/router'
 
 const getDefaultState = () => {
@@ -52,19 +52,19 @@ const actions = {
   //       })
   //   })
   // },
-  login({ commit }, code) {
+  login(code) {
     console.log('🚀 ~ login ~ code', code)
-    return new Promise((resolve, reject) => {
-      wxLogin({ code })
-        .then(response => {
-          const { token } = response
-          commit('SET_TOKEN', token)
-          setToken(token)
-          resolve()
-        })
-        .catch(error => {
-          reject(error)
-        })
+    return new Promise(() => {
+      // wxLogin({ code })
+      //   .then(response => {
+      //     const { token } = response
+      //     commit('SET_TOKEN', token)
+      //     setToken(token)
+      //     resolve()
+      //   })
+      //   .catch(error => {
+      //     reject(error)
+      //   })
     })
   },
 

@@ -1,6 +1,19 @@
 <template>
   <div class="home-viewport">
-    <span class="home-font"> 测试字体大小 </span>
+    <el-upload
+      class="upload-wrap"
+      drag
+      action="https://jsonplaceholder.typicode.com/posts/"
+      multiple
+      :data="params"
+      :before-upload="beforeUpload"
+      :on-success="onsucess"
+      :file-list="fileList"
+    >
+      <i class="el-icon-upload"></i>
+      <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+      <div class="el-upload__tip">支持扩展名: .rar .zip .doc .docx .pdf .jpg...</div>
+    </el-upload>
   </div>
 </template>
 <script>
@@ -8,35 +21,40 @@ export default {
   name: 'Home',
   components: {},
   data() {
-    return {}
+    return {
+      params: { id: 'test', key: 'key1' },
+      fileList: []
+    }
   },
   props: {},
   created() {},
-  mounted() {
-    console.log(window.screen.width) // view port width
-  },
+  mounted() {},
   beforeDestroy() {},
   computed: {},
   watch: {},
-  methods: {}
+  methods: {
+    beforeUpload(params) {
+      console.log('🚀TCL: >> beforeUpload >> params', params)
+    },
+    onsucess(response, file, fileList) {
+      console.log('🚀TCL: >> ,onsucess >> response', response)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
 .home-viewport {
-  background-color: #9e9595a1;
-  font-size: 16px;
-  font-weight: 400;
-  height: 224px;
-  line-height: 224px;
-  margin: 10px auto;
-  opacity: 1;
-  text-align: center;
-  width: 295px;
-  border-radius: 8px;
+  width: 600px;
+  height: 600px;
+  margin: 20px auto;
 }
 
-.home-font {
-  color: #000;
-  letter-spacing: 0.64px;
+.el-icon-upload {
+  color: #4388e2;
+}
+.el-upload__tip {
+  font-size: 12px;
+  margin-top: 10px;
+  color: #999;
 }
 </style>

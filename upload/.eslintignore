@@ -4,4 +4,5 @@ public
 src/assets
 src/utils/request.js
 src/permission.js
+src/api
 mock

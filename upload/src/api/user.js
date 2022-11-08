@@ -16,6 +16,14 @@ export function getInfo(token) {
   })
 }
 
+export function getUserInfo(token) {
+  return request({
+    url: '/vue-template/user/info',
+    method: 'get',
+    params: { token }
+  })
+}
+
 export function logout() {
   return request({
     url: '/vue-template/user/logout',
